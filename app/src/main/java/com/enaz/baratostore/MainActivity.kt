@@ -5,10 +5,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.enaz.baratostore.home.HomeFragment
+import com.enaz.baratostore.model.HomeProductItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFragmentListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,5 +29,9 @@ class MainActivity : DaggerAppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onHomeProductItemClicked(homeProductItem: HomeProductItem) {
+        TODO("Not yet implemented")
     }
 }

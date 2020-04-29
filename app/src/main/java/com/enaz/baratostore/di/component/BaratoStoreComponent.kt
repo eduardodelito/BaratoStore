@@ -2,7 +2,10 @@ package com.enaz.baratostore.di.component
 
 import android.app.Application
 import com.enaz.baratostore.BaratoStoreApplication
+import com.enaz.baratostore.common.di.NetworkModule
+import com.enaz.baratostore.database.di.DatabaseModule
 import com.enaz.baratostore.di.module.ActivityBindingModule
+import com.enaz.baratostore.di.module.AppModule
 import com.enaz.baratostore.di.module.ViewModelBindingModule
 import dagger.BindsInstance
 import dagger.Component
@@ -14,12 +17,19 @@ import javax.inject.Singleton
  * Created by eduardo.delito on 4/28/20.
  */
 @Singleton
-@Component(modules = [AndroidInjectionModule::class, ActivityBindingModule::class, ViewModelBindingModule::class])
+@Component(modules = [
+    AndroidInjectionModule::class,
+    ActivityBindingModule::class,
+    ViewModelBindingModule::class,
+    AppModule::class
+])
 interface BaratoStoreComponent : AndroidInjector<BaratoStoreApplication> {
     @Component.Builder
     interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
+        fun network(networkModule: NetworkModule): Builder
+        fun database(databaseModule: DatabaseModule): Builder
         fun build(): BaratoStoreComponent
     }
 }

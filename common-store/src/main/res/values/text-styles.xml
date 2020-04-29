@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Heading">
+        <item name="android:textSize">@dimen/font_15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">@dimen/padding_4dp</item>
+    </style>
+
+    <style name="Body">
+        <item name="android:textSize">@dimen/font_12sp</item>
+        <item name="android:lineSpacingExtra">@dimen/padding_8dp</item>
+    </style>
+
+    <style name="Heading.Dark">
+        <item name="android:textColor">@color/coal_black</item>
+    </style>
+
+    <style name="Body.Dark">
+        <item name="android:textColor">@color/coal_black</item>
+    </style>
+
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Padding-->
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+
+    <!--Font-->
+    <dimen name="font_12sp">12sp</dimen>
+    <dimen name="font_15sp">15sp</dimen>
+
+    <!--Corner Radius-->
+    <dimen name="corner_radius_16dp">16dp</dimen>
+</resources>

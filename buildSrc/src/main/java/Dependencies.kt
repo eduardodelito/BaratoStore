@@ -30,6 +30,7 @@ object Versions {
     const val coreKtx = "1.2.0"
     const val room = "2.2.3"
     const val multidex = "1.0.3"
+    const val swipeRefreshLayout = "1.0.0"
 
     // google
     const val materialDesign = "1.2.0-alpha03"
@@ -55,6 +56,7 @@ object Libs {
         const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
         const val lifecycleViewModelktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
 
         const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"

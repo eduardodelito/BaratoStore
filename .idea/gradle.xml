@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/cart-store" />
             <option value="$PROJECT_DIR$/common-store" />
+            <option value="$PROJECT_DIR$/database-store" />
             <option value="$PROJECT_DIR$/feed-store" />
             <option value="$PROJECT_DIR$/home-store" />
             <option value="$PROJECT_DIR$/profile-store" />

@@ -1,6 +1,8 @@
 package com.enaz.baratostore
 
 import androidx.multidex.MultiDex
+import com.enaz.baratostore.common.di.NetworkModule
+import com.enaz.baratostore.database.di.DatabaseModule
 import com.enaz.baratostore.di.component.DaggerBaratoStoreComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
@@ -19,6 +21,8 @@ class BaratoStoreApplication : DaggerApplication() {
         return DaggerBaratoStoreComponent
             .builder()
             .application(this)
+            .network(NetworkModule())
+            .database(DatabaseModule(this))
             .build()
     }
 }
