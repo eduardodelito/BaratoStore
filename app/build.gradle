@@ -1,0 +1,44 @@
+import dependencies.*
+
+apply plugin: 'com.android.application'
+
+apply from: '../core-dependencies.gradle'
+
+android {
+
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        applicationId Versions.applicationId
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':home-store')
+    implementation project(':feed-store')
+    implementation project(':cart-store')
+    implementation project(':profile-store')
+    implementation project(':common-store')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

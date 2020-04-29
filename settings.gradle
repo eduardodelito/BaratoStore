@@ -1,0 +1,2 @@
+include ':app', ':home-store', ':feed-store', ':cart-store', ':profile-store', ':common-store'
+rootProject.name = "BaratoStore"
