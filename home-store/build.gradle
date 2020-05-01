@@ -14,6 +14,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':common-store')
+    implementation project(':client-store')
+    implementation project(':database-store')
 
 //TODO: Implement Unit Test
 //    testImplementation "org.mockito:mockito-core:${Versions.mockito}"

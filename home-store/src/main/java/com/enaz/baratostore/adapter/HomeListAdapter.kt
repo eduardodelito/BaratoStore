@@ -28,9 +28,9 @@ class HomeListAdapter(val homeListAdapterListener: HomeListAdapterListener) : Re
     override fun onBindViewHolder(holder: HomeProductViewHolder, position: Int) {
         holder.homeProductItemBinding.productItem = list[position]
         holder.homeProductItemBinding.executePendingBindings()
-//        holder.binding.trackCardView.setOnClickListener {
-//            homeListAdapterListener.onHomeProductSelect(list[position])
-//        }
+        holder.homeProductItemBinding.homeCardView.setOnClickListener {
+            homeListAdapterListener.onHomeProductSelect(list[position])
+        }
     }
 
     /**

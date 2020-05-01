@@ -1,5 +1,6 @@
 package com.enaz.baratostore.di.module
 
+import com.enaz.baratostore.client.di.ClientModule
 import com.enaz.baratostore.common.di.NetworkModule
 import com.enaz.baratostore.database.di.DatabaseModule
 import dagger.Module
@@ -9,7 +10,9 @@ import dagger.Module
  */
 @Module(
     includes = [
-        NetworkModule::class, DatabaseModule::class
+        NetworkModule::class,
+        DatabaseModule::class,
+        ClientModule::class
     ]
 )
 class AppModule

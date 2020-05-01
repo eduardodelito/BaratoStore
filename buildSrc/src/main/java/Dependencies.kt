@@ -26,7 +26,7 @@ object Versions {
     const val navigation = "2.2.2"
     const val appcompat = "1.1.0"
     const val constraintLayout = "1.1.3"
-    const val lifecycle = "2.2.0"
+    const val lifecycle = "2.2.0-alpha02"
     const val coreKtx = "1.2.0"
     const val room = "2.2.3"
     const val multidex = "1.0.3"
@@ -38,6 +38,11 @@ object Versions {
 
     //network
     const val retrofit = "2.5.0"
+    const val fresco = "2.0.0"
+
+    // third parties
+    const val rxJavaVersion = "2.2.12"
+    const val rxAndroidVersion = "2.1.1"
 }
 
 // Object that contains libraries needed by the app
@@ -87,5 +92,11 @@ object Libs {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
         const val retrofitGSONConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
         const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+        const val fresco = "com.facebook.fresco:fresco:${Versions.fresco}"
+    }
+
+    private object RxJava {
+        const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}"
+        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroidVersion}"
     }
 }

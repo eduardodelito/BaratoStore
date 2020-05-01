@@ -2,4 +2,5 @@
 <resources>
     <color name="coal_black">#161719</color>
     <color name="light_gray">#D9DADD</color>
+    <color name="transparent_gray">#BBF5F6F7</color>
 </resources>

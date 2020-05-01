@@ -3,7 +3,10 @@
     <string name="title_home">Home</string>
 
     <string name="lbl_search">Search</string>
+    <string name="delete">Delete</string>
 
     <string name="error_empty_query">Keyword is empty. Please provide a valid keyword.</string>
+    <string name="error_database">Local Database Problem.</string>
 
+    <string name="lbl_cached">Recent search result for keyword \'%1s\'</string>
 </resources>
