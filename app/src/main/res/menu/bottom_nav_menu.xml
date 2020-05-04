@@ -7,6 +7,11 @@
         android:title="@string/title_home" />
 
     <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/ic_baseline_post_add_24"
+        android:title="@string/title_add" />
+
+    <item
         android:id="@+id/navigation_feed"
         android:icon="@drawable/ic_baseline_dynamic_feed_24"
         android:title="@string/title_feed" />

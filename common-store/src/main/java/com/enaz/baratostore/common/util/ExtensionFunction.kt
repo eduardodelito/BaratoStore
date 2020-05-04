@@ -24,6 +24,17 @@ fun AppCompatTextView.setLabelWithVisibility(message: String?) {
 }
 
 /**
+ * Extension function to set visibility depending on isEmpty value.
+ *
+ * @param isEmpty value true or false
+ */
+fun AppCompatTextView.setLabelWithVisibility(isEmpty: Boolean) {
+    with(this) {
+        visibility = if (isEmpty == true) View.VISIBLE else View.GONE
+    }
+}
+
+/**
  * Extension function to handle rxJava disposal safely
  *
  * @return boolean object to state the result of safe dispose

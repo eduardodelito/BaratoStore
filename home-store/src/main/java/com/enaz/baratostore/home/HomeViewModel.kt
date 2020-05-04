@@ -2,8 +2,6 @@ package com.enaz.baratostore.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.enaz.baratostore.client.model.ProductResponse
-import com.enaz.baratostore.client.serviceModelToProductEntity
 import com.enaz.baratostore.common.viewmodel.BaseViewModel
 import com.enaz.baratostore.database.repository.ProductRepository
 import javax.inject.Inject
@@ -15,16 +13,6 @@ class HomeViewModel@Inject constructor(private val productRepository: ProductRep
 
     private val _errorMessage = MutableLiveData<Int?>()
     val errorMessage: LiveData<Int?> get() = _errorMessage
-
-    fun loadDummyData() {
-        val list = mutableListOf<ProductResponse>()
-        list.add(ProductResponse("Product1", "This is Product1"))
-        list.add(ProductResponse("Product2", "This is Product2"))
-        list.add(ProductResponse("Product3", "This is Product3"))
-        list.add(ProductResponse("Product4", "This is Product4"))
-        list.add(ProductResponse("Product5", "This is Product5"))
-        productRepository.insertProducts(list.serviceModelToProductEntity())
-    }
 
     fun getProducts() = productRepository.getProducts()
 

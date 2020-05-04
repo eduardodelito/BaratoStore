@@ -12,9 +12,9 @@ import com.enaz.baratostore.common.fragment.BaseFragment
 import com.enaz.baratostore.common.util.MarginItemDecoration
 import com.enaz.baratostore.common.util.setLabelWithVisibility
 import com.enaz.baratostore.database.entity.ProductEntity
+import com.enaz.baratostore.database.mapper.entityModelToProductItemList
+import com.enaz.baratostore.database.model.ProductItem
 import com.enaz.baratostore.home.databinding.HomeFragmentBinding
-import com.enaz.baratostore.model.HomeProductItem
-import com.enaz.baratostore.util.entityModelToHomeProductItem
 import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
@@ -33,14 +33,14 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
     override fun getBindingVariable() = BR.viewModel
 
     override fun initData() {
-        viewModel.loadDummyData()
+        //Do nothing
     }
 
     override fun initViews() {
         setHasOptionsMenu(true)
         homeListAdapter = HomeListAdapter(object : HomeListAdapter.HomeListAdapterListener {
-            override fun onHomeProductSelect(homeProductItem: HomeProductItem) {
-                mListener?.onHomeProductItemClicked(homeProductItem)
+            override fun onHomeProductSelect(productItem: ProductItem) {
+                mListener?.onHomeProductItemClicked(productItem)
             }
         })
 
@@ -59,20 +59,16 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
 
     override fun subscribeUi() {
         with(viewModel) {
-            errorMessage.observe(viewLifecycleOwner, Observer { messageId ->
-                invalidResultTextView.setLabelWithVisibility(messageId?.let {
-                    getString(messageId)
-                })
-            })
-
             isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
                 homeSwipeToRefresh.isRefreshing = isLoading
             })
 
             getProducts().observe(viewLifecycleOwner, Observer<List<ProductEntity>> {
-                homeListAdapter.updateDataSet(it.entityModelToHomeProductItem())
+                with(it) {
+                    invalidResultTextView.setLabelWithVisibility(isEmpty())
+                    homeListAdapter.updateDataSet(entityModelToProductItemList())
+                }
             })
-
         }
     }
 
@@ -99,9 +95,9 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
         /**
          * Function to handle list item clicked callback to class that implement it.
          *
-         * @param homeProductItem the selected product item
+         * @param productItem the selected product item
          * */
-        fun onHomeProductItemClicked(homeProductItem: HomeProductItem)
+        fun onHomeProductItemClicked(productItem: ProductItem)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {

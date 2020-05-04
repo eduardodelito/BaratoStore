@@ -18,6 +18,8 @@ interface ProductRepository {
 
     fun insertProducts(productList: List<ProductEntity>)
 
+    fun insertProduct(productEntity: ProductEntity)
+
     fun deleteProducts()
 }
 
@@ -32,9 +34,20 @@ class ProductRepositoryImpl(private val productDao: ProductDao) : ProductReposit
         launch { insertProductsBG(productList) }
     }
 
-    private suspend fun insertProductsBG(productList: List<ProductEntity>) {
+    private suspend fun insertProductsBG(productList: List<ProductEntity>) =
         withContext(Dispatchers.IO) {
             productDao.insertProducts(productList)
+        }
+
+    override fun insertProduct(productEntity: ProductEntity) {
+        launch {
+            insertProductBG(productEntity)
+        }
+    }
+
+    private suspend fun insertProductBG(productEntity: ProductEntity) {
+        withContext(Dispatchers.IO) {
+            productDao.insertProduct(productEntity)
         }
     }
 

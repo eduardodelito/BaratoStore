@@ -1,4 +1,6 @@
 apply from: "$rootDir/android-module-base.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     sourceSets {
@@ -12,8 +14,12 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':common-store')
+    implementation project(':database-store')
 
 //TODO: Implement Unit Test
 //    testImplementation "org.mockito:mockito-core:${Versions.mockito}"

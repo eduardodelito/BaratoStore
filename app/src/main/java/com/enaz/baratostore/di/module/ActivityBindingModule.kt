@@ -1,10 +1,7 @@
 package com.enaz.baratostore.di.module
 
 import com.enaz.baratostore.MainActivity
-import com.enaz.baratostore.di.CartBindingModule
-import com.enaz.baratostore.di.FeedBindingModule
-import com.enaz.baratostore.di.HomeBindingModule
-import com.enaz.baratostore.di.ProfileBindingModule
+import com.enaz.baratostore.di.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,6 +13,7 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector(
         modules = [
             HomeBindingModule::class,
+            AddBindingModule::class,
             FeedBindingModule::class,
             ProfileBindingModule::class,
             CartBindingModule::class

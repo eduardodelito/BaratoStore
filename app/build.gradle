@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':home-store')
+    implementation project(':add-store')
     implementation project(':feed-store')
     implementation project(':cart-store')
     implementation project(':profile-store')

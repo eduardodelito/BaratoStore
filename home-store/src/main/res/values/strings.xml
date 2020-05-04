@@ -5,6 +5,8 @@
     <string name="lbl_search">Search</string>
     <string name="delete">Delete</string>
 
+    <string name="success_database">Local database loaded successfully.</string>
+
     <string name="error_empty_query">Keyword is empty. Please provide a valid keyword.</string>
     <string name="error_database">Local Database Problem.</string>
 

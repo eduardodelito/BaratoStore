@@ -12,6 +12,12 @@
         tools:layout="@layout/home_fragment" />
 
     <fragment
+        android:id="@+id/navigation_add"
+        android:name="com.enaz.baratostore.add.AddFragment"
+        android:label="@string/title_add"
+        tools:layout="@layout/add_fragment" />
+
+    <fragment
         android:id="@+id/navigation_feed"
         android:name="com.enaz.baratostore.feed.FeedFragment"
         android:label="@string/title_feed"

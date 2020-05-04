@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.enaz.baratostore.database.model.ProductItem
 import com.enaz.baratostore.home.R
 import com.enaz.baratostore.home.databinding.HomeProductItemBinding
-import com.enaz.baratostore.model.HomeProductItem
 
 /**
  * Created by eduardo.delito on 4/29/20.
  */
 class HomeListAdapter(val homeListAdapterListener: HomeListAdapterListener) : RecyclerView.Adapter<HomeListAdapter.HomeProductViewHolder>() {
 
-    private var list: List<HomeProductItem> = ArrayList()
+    private var list: List<ProductItem> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeProductViewHolder {
         val binding: HomeProductItemBinding =
@@ -26,9 +26,9 @@ class HomeListAdapter(val homeListAdapterListener: HomeListAdapterListener) : Re
     }
 
     override fun onBindViewHolder(holder: HomeProductViewHolder, position: Int) {
-        holder.homeProductItemBinding.productItem = list[position]
-        holder.homeProductItemBinding.executePendingBindings()
-        holder.homeProductItemBinding.homeCardView.setOnClickListener {
+        holder.productItemBinding.productItem = list[position]
+        holder.productItemBinding.executePendingBindings()
+        holder.productItemBinding.homeCardView.setOnClickListener {
             homeListAdapterListener.onHomeProductSelect(list[position])
         }
     }
@@ -38,14 +38,14 @@ class HomeListAdapter(val homeListAdapterListener: HomeListAdapterListener) : Re
      *
      * @param list the new set of data
      */
-    fun updateDataSet(list: List<HomeProductItem>) {
+    fun updateDataSet(list: List<ProductItem>) {
         this.list = list
         notifyDataSetChanged()
     }
 
-    inner class HomeProductViewHolder(val homeProductItemBinding: HomeProductItemBinding) : RecyclerView.ViewHolder(homeProductItemBinding.root)
+    inner class HomeProductViewHolder(val productItemBinding: HomeProductItemBinding) : RecyclerView.ViewHolder(productItemBinding.root)
 
     interface HomeListAdapterListener {
-        fun onHomeProductSelect(homeProductItem: HomeProductItem)
+        fun onHomeProductSelect(productItem: ProductItem)
     }
 }

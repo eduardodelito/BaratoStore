@@ -3,7 +3,7 @@
     <data>
         <variable
             name="productItem"
-            type="com.enaz.baratostore.model.HomeProductItem" />
+            type="com.enaz.baratostore.database.model.ProductItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
