@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
         homeSearchView.setOnQueryTextListener(this)
 
         homeSwipeToRefresh.setOnRefreshListener {
-//            viewModel.refreshProducts()
+            viewModel.refreshProducts()
         }
     }
 

@@ -18,6 +18,10 @@ class HomeViewModel@Inject constructor(private val productRepository: ProductRep
 
     fun deleteProducts() = productRepository.deleteProducts()
 
+    fun refreshProducts() {
+        _isLoading.postValue(false)
+    }
+
     /**
      * Function to handle SearchView on text submit event
      *

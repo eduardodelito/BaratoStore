@@ -13,7 +13,7 @@ import com.enaz.baratostore.home.databinding.HomeProductItemBinding
  */
 class HomeListAdapter(val homeListAdapterListener: HomeListAdapterListener) : RecyclerView.Adapter<HomeListAdapter.HomeProductViewHolder>() {
 
-    private var list: List<ProductItem> = ArrayList()
+    private var list: List<ProductItem> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeProductViewHolder {
         val binding: HomeProductItemBinding =
