@@ -8,16 +8,24 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.enaz.baratostore.add.AddFragment
+import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
 import com.enaz.baratostore.database.model.ProductItem
+import com.enaz.baratostore.dialog.LoginOrRegisterDialog
 import com.enaz.baratostore.home.HomeFragment
+import com.enaz.baratostore.home.HomeViewModel
+import com.enaz.baratostore.listener.CallbackListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFragmentListener,
     AddFragment.OnAddFragmentListener {
 
     private lateinit var navView: BottomNavigationView
     private lateinit var navController: NavController
+
+    @Inject
+    lateinit var firebaseAuthenticationManager: FirebaseAuthenticationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,8 @@ class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFrag
 
         //TODO: add this account if login as admin.
 //        navView.menu.findItem(R.id.navigation_add).isVisible = true
+
+        showDialog()
     }
 
     override fun onHomeProductItemClicked(productItem: ProductItem) {
@@ -49,5 +59,10 @@ class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFrag
 
     override fun setSelectedAddMenu() {
         navView.menu.findItem(R.id.navigation_home).onNavDestinationSelected(navController)
+    }
+
+    private fun showDialog() {
+        val dialogFragment = LoginOrRegisterDialog(firebaseAuthenticationManager)
+        dialogFragment.show(supportFragmentManager, "login")
     }
 }

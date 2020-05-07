@@ -35,6 +35,11 @@ object Versions {
     // google
     const val materialDesign = "1.2.0-alpha03"
     const val dagger = "2.25.3"
+    const val googleServices = "4.3.3"
+    const val firebaseAnalytics = "17.4.0"
+    const val firebase = "19.3.1"
+    const val firebaseDatabase = "19.3.0"
+    const val playServicesAuth = "18.0.0"
 
     //network
     const val retrofit = "2.5.0"
@@ -77,6 +82,14 @@ object Libs {
         const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin_version}"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}"
         const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+        const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
+    }
+
+    private object Firebase {
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
+        const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebase}"
+        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:${Versions.firebaseDatabase}"
+        const val playServicesAuth = "com.google.android.gms:play-services-auth:${Versions.playServicesAuth}"
     }
 
     private object Dagger {

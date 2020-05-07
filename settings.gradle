@@ -1,5 +1,2 @@
-include ':add-store'
-include ':client-store'
-include ':database-store'
-include ':app', ':home-store', ':feed-store', ':cart-store', ':profile-store', ':common-store'
+include ':app', ':store-home', ':store-add', ':store-feed', ':store-cart', ':store-profile', ':store-common', ':store-database', ':store-client'
 rootProject.name = "BaratoStore"

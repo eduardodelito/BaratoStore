@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1019437338527",
+    "firebase_url": "https://baratostore-697df.firebaseio.com",
+    "project_id": "baratostore-697df",
+    "storage_bucket": "baratostore-697df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019437338527:android:356c1248b898df2b2177aa",
+        "android_client_info": {
+          "package_name": "com.enaz.baratostore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019437338527-o0fmn43m04l83sruc798257obu0lfntv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7rdMI5OTgjBMy8dmJDVvktBbZdTZ2ZPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019437338527-o0fmn43m04l83sruc798257obu0lfntv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,16 +11,16 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/add-store" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/cart-store" />
-            <option value="$PROJECT_DIR$/client-store" />
-            <option value="$PROJECT_DIR$/common-store" />
-            <option value="$PROJECT_DIR$/database-store" />
-            <option value="$PROJECT_DIR$/feed-store" />
-            <option value="$PROJECT_DIR$/home-store" />
-            <option value="$PROJECT_DIR$/profile-store" />
+            <option value="$PROJECT_DIR$/store-add" />
+            <option value="$PROJECT_DIR$/store-cart" />
+            <option value="$PROJECT_DIR$/store-client" />
+            <option value="$PROJECT_DIR$/store-common" />
+            <option value="$PROJECT_DIR$/store-database" />
+            <option value="$PROJECT_DIR$/store-feed" />
+            <option value="$PROJECT_DIR$/store-home" />
+            <option value="$PROJECT_DIR$/store-profile" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -59,6 +59,11 @@ dependencies {
     implementation Libs.Android.roomRxJava
     implementation Libs.Android.roomGuava
 
+    implementation Libs.Firebase.firebaseAnalytics
+    implementation Libs.Firebase.firebaseAuth
+    implementation Libs.Firebase.firebaseDatabase
+    implementation Libs.Firebase.playServicesAuth
+
     // Test helpers
     testImplementation Libs.Android.roomTesting
 
