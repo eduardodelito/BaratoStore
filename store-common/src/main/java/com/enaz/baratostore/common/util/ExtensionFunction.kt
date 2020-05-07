@@ -24,13 +24,13 @@ fun AppCompatTextView.setLabelWithVisibility(message: String?) {
 }
 
 /**
- * Extension function to set visibility depending on isEmpty value.
+ * Extension function to set visibility depending on isVisible value.
  *
- * @param isEmpty value true or false
+ * @param isVisible value true or false
  */
-fun AppCompatTextView.setLabelWithVisibility(isEmpty: Boolean) {
+fun View.setViewWithVisibility(isVisible: Boolean) {
     with(this) {
-        visibility = if (isEmpty == true) View.VISIBLE else View.GONE
+        visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }
 

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.enaz.baratostore.adapter.HomeListAdapter
 import com.enaz.baratostore.common.fragment.BaseFragment
 import com.enaz.baratostore.common.util.MarginItemDecoration
-import com.enaz.baratostore.common.util.setLabelWithVisibility
+import com.enaz.baratostore.common.util.setViewWithVisibility
 import com.enaz.baratostore.database.entity.ProductEntity
 import com.enaz.baratostore.database.mapper.entityModelToProductItemList
 import com.enaz.baratostore.database.model.ProductItem
@@ -67,7 +67,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
 
             getProducts().observe(viewLifecycleOwner, Observer<List<ProductEntity>> {
                 with(it) {
-                    invalidResultTextView.setLabelWithVisibility(isEmpty())
+                    invalidResultTextView.setViewWithVisibility(isEmpty())
                     homeListAdapter.updateDataSet(entityModelToProductItemList())
                 }
             })

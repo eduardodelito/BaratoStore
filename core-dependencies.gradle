@@ -62,6 +62,7 @@ dependencies {
     implementation Libs.Firebase.firebaseAnalytics
     implementation Libs.Firebase.firebaseAuth
     implementation Libs.Firebase.firebaseDatabase
+    implementation Libs.Firebase.firebaseStorageKtx
     implementation Libs.Firebase.playServicesAuth
 
     // Test helpers

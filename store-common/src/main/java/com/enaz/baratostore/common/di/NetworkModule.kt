@@ -2,8 +2,11 @@ package com.enaz.baratostore.common.di
 
 import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
 import com.enaz.baratostore.common.manager.FirebaseAuthenticationManagerImpl
+import com.enaz.baratostore.common.manager.FirebaseStoreManager
+import com.enaz.baratostore.common.manager.FirebaseStoreManagerImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -33,6 +36,17 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun firebaseStorage(): FirebaseStorage = FirebaseStorage.getInstance()
+
+    @Provides
+    @Singleton
     fun provideFirebaseAuthenticationManager(firebaseAuth: FirebaseAuth): FirebaseAuthenticationManager =
         FirebaseAuthenticationManagerImpl(firebaseAuth)
+
+    @Provides
+    @Singleton
+    fun provideFirebaseStorageManager(
+        firebaseAuth: FirebaseAuth,
+        firebaseStorage: FirebaseStorage
+    ): FirebaseStoreManager = FirebaseStoreManagerImpl(firebaseAuth, firebaseStorage)
 }

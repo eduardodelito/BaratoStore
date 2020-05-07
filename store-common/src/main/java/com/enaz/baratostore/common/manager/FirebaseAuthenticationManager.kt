@@ -1,6 +1,7 @@
 package com.enaz.baratostore.common.manager
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 
 /**
@@ -13,9 +14,15 @@ interface FirebaseAuthenticationManager {
 
     fun getUserId(): String
 
-    fun logOut(onResult: () -> Unit)
+    fun signOut()
 
     fun isUserLogged(): Boolean
+
+    fun getDisplayName(): String
+
+    fun getEmail(): String
+
+    fun getMobileNumber(): String
 }
 
 class FirebaseAuthenticationManagerImpl(private val firebaseAuth: FirebaseAuth) : FirebaseAuthenticationManager {
@@ -49,9 +56,19 @@ class FirebaseAuthenticationManagerImpl(private val firebaseAuth: FirebaseAuth) 
 
     override fun getUserId(): String = firebaseAuth.currentUser?.uid ?: ""
 
-    override fun logOut(onResult: () -> Unit) {
+    override fun signOut() {
         firebaseAuth.signOut()
     }
 
     override fun isUserLogged() = firebaseAuth.currentUser != null
+
+    override fun getDisplayName() = firebaseAuth.currentUser?.displayName.toString()
+
+    override fun getEmail() = firebaseAuth.currentUser?.email.toString()
+
+    override fun getMobileNumber() = firebaseAuth.currentUser?.phoneNumber.toString()
+
+    fun test() {
+
+    }
 }

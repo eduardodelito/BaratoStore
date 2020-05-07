@@ -38,6 +38,7 @@ object Versions {
     const val googleServices = "4.3.3"
     const val firebaseAnalytics = "17.4.0"
     const val firebase = "19.3.1"
+    const val firebaseStorage = "19.1.1"
     const val firebaseDatabase = "19.3.0"
     const val playServicesAuth = "18.0.0"
 
@@ -89,6 +90,7 @@ object Libs {
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
         const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebase}"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:${Versions.firebaseDatabase}"
+        const val firebaseStorageKtx = "com.google.firebase:firebase-storage-ktx:${Versions.firebaseStorage}"
         const val playServicesAuth = "com.google.android.gms:play-services-auth:${Versions.playServicesAuth}"
     }
 

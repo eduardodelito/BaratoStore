@@ -1,6 +1,8 @@
 package com.enaz.baratostore.di
 
 import androidx.lifecycle.ViewModel
+import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
+import com.enaz.baratostore.common.manager.FirebaseStoreManager
 import com.enaz.baratostore.common.viewmodel.ViewModelKey
 import com.enaz.baratostore.profile.ProfileViewModel
 import dagger.Module
@@ -15,5 +17,8 @@ class ProfileViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(ProfileViewModel::class)
-    fun provideHomeViewModel(): ViewModel = ProfileViewModel()
+    fun provideHomeViewModel(
+        firebaseAuthenticationManager: FirebaseAuthenticationManager,
+        firebaseStoreManager: FirebaseStoreManager
+    ): ViewModel = ProfileViewModel(firebaseAuthenticationManager, firebaseStoreManager)
 }
