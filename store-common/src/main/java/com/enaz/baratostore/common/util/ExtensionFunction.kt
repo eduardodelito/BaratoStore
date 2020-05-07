@@ -1,7 +1,9 @@
 package com.enaz.baratostore.common.util
 
 import android.content.res.AssetManager
+import android.net.Uri
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatTextView
 import io.reactivex.disposables.Disposable
 

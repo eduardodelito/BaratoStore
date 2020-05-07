@@ -22,7 +22,7 @@ private val firebaseStoreManager: FirebaseStoreManager
 
     fun uploadImageAndSaveUri(imageBitmap: Bitmap) = firebaseStoreManager.uploadImageAndSaveUri(imageBitmap)
 
-    fun isUploading() = firebaseStoreManager.isUploading
-
     fun imageUri() = firebaseStoreManager.imageUri
+
+    fun loadProfilePicture() = firebaseStoreManager.loadProfilePicture()
 }

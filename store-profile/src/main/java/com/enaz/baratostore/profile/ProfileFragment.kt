@@ -3,20 +3,18 @@ package com.enaz.baratostore.profile
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
 import android.provider.MediaStore
-import android.view.View
 import androidx.lifecycle.Observer
 import com.enaz.baratostore.common.fragment.BaseFragment
 import com.enaz.baratostore.common.util.setViewWithVisibility
 import com.enaz.baratostore.profile.databinding.ProfileFragmentBinding
+import com.facebook.drawee.drawable.ScalingUtils
 import kotlinx.android.synthetic.main.profile_fragment.*
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
+
 
 class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>() {
 
-    private lateinit var imageUri : Uri
     private val REQUEST_IMAGE_CAPTURE = 100
 
     @Inject
@@ -31,22 +29,23 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
     }
 
     override fun initViews() {
-        logout_btn.setOnClickListener { viewModel.signOut() }
+        logout_btn.setOnClickListener {
+            viewModel.signOut()
+            resetProfileViews()
+        }
         profile_avatar.setOnClickListener {
             takePicture()
         }
     }
 
     override fun subscribeUi() {
-       with(viewModel) {
-           isUploading().observe(viewLifecycleOwner, Observer {
-               profile_avatar_progress.setViewWithVisibility(it)
-           })
+        with(viewModel) {
+            imageUri().observe(viewLifecycleOwner, Observer { imageUri ->
+                if (imageUri != null) profile_avatar.setImageURI(imageUri, context)
+            })
 
-           imageUri().observe(viewLifecycleOwner, Observer { imageUri ->
-                profile_avatar.setImageURI(imageUri, context)
-           })
-       }
+            loadProfilePicture()
+        }
     }
 
     private fun takePicture() {
@@ -63,6 +62,13 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
             val imageBitmap = data?.extras?.get("data") as Bitmap
             viewModel.uploadImageAndSaveUri(imageBitmap)
         }
+    }
+
+    private fun resetProfileViews() {
+        profile_avatar.hierarchy.setPlaceholderImage(R.drawable.place_holder_profile)
+        display_name.text = ""
+        profile_email.text = ""
+        profile_mobile_number.text = ""
     }
 
     companion object {
