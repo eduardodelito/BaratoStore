@@ -52,14 +52,16 @@ class FirebaseStoreManagerImpl(
     }
 
     override fun loadProfilePicture() {
-        val storageRef = firebaseStorage
-            .reference
-            .child("profile_pic/{${firebaseAuth.currentUser?.uid}}")
-        storageRef.downloadUrl.addOnCompleteListener {
-            if (it.isSuccessful && it.isComplete) {
-                _imageUri.postValue(it.result)
-            } else {
-                _imageUri.postValue(null)
+        if(firebaseAuth.currentUser != null) {
+            val storageRef = firebaseStorage
+                .reference
+                .child("profile_pic/{${firebaseAuth.currentUser?.uid}}")
+            storageRef.downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful && it.isComplete) {
+                    _imageUri.postValue(it.result)
+                } else {
+                    _imageUri.postValue(null)
+                }
             }
         }
     }

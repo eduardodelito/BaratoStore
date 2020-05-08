@@ -67,8 +67,4 @@ class FirebaseAuthenticationManagerImpl(private val firebaseAuth: FirebaseAuth) 
     override fun getEmail() = firebaseAuth.currentUser?.email.toString()
 
     override fun getMobileNumber() = firebaseAuth.currentUser?.phoneNumber.toString()
-
-    fun test() {
-
-    }
 }

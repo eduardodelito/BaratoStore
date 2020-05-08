@@ -48,9 +48,9 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:placeholderImage="@drawable/place_holder_profile"
-                            app:progressBarImage="@drawable/progress_animation"
                             app:placeholderImageScaleType="centerCrop"
-                            app:roundAsCircle="true"/>
+                            app:progressBarImage="@drawable/progress_animation"
+                            app:roundAsCircle="true" />
 
                         <LinearLayout
                             android:id="@+id/layout_display_name"

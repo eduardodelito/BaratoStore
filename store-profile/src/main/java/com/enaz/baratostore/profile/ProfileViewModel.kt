@@ -11,7 +11,9 @@ private val firebaseStoreManager: FirebaseStoreManager
 ) : BaseViewModel() {
 
     fun signOut() {
-        firebaseAuthenticationManager.signOut()
+        if (firebaseAuthenticationManager.isUserLogged()) {
+            firebaseAuthenticationManager.signOut()
+        }
     }
 
     fun getDisplayName() = firebaseAuthenticationManager.getDisplayName()
