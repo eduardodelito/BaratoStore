@@ -55,8 +55,6 @@ class HomeFragment : BaseFragment<HomeFragmentBinding, HomeViewModel>(),
         homeSwipeToRefresh.setOnRefreshListener {
             viewModel.refreshProducts()
         }
-
-        viewModel.validateAuth()
     }
 
     override fun subscribeUi() {

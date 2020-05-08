@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.enaz.baratostore.R
+import com.enaz.baratostore.common.listener.CallbackListener
 import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
-import com.enaz.baratostore.listener.CallbackListener
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.login_dialog_layout.*
-import javax.inject.Inject
 
 /**
  * Created by eduardo.delito on 5/7/20.
  */
-class LoginOrRegisterDialog(private val firebaseAuthenticationManager: FirebaseAuthenticationManager) :
+class LoginOrRegisterDialog(
+    private val firebaseAuthenticationManager: FirebaseAuthenticationManager,
+    private val listener: CallbackListener
+) :
     DialogFragment() {
 
     override fun onCreateView(
@@ -52,6 +52,8 @@ class LoginOrRegisterDialog(private val firebaseAuthenticationManager: FirebaseA
             val password = password_field.text.toString()
             firebaseAuthenticationManager.register(userName, password, userName, ::onResult)
         }
+
+        skip_btn.setOnClickListener { dismiss() }
     }
 
     private fun setViewVisibility(isLoadingVisible: Boolean) {
@@ -68,6 +70,7 @@ class LoginOrRegisterDialog(private val firebaseAuthenticationManager: FirebaseA
     private fun onResult(result: Boolean) {
         if (result) {
             dismiss()
+            listener.updateAddMenu()
         } else {
             setViewVisibility(false)
             error_text_view.visibility = View.VISIBLE

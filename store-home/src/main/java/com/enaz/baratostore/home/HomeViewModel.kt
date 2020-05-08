@@ -26,10 +26,6 @@ class HomeViewModel @Inject constructor(
         _isLoading.postValue(false)
     }
 
-    fun validateAuth() {
-        firebaseAuth.currentUser.let { println("${it?.email} ======= ${it?.displayName}") }
-    }
-
     /**
      * Function to handle SearchView on text submit event
      *

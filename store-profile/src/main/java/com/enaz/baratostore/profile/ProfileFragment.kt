@@ -1,14 +1,14 @@
 package com.enaz.baratostore.profile
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.provider.MediaStore
 import androidx.lifecycle.Observer
 import com.enaz.baratostore.common.fragment.BaseFragment
-import com.enaz.baratostore.common.util.setViewWithVisibility
+import com.enaz.baratostore.common.listener.CallbackListener
 import com.enaz.baratostore.profile.databinding.ProfileFragmentBinding
-import com.facebook.drawee.drawable.ScalingUtils
 import kotlinx.android.synthetic.main.profile_fragment.*
 import javax.inject.Inject
 
@@ -16,6 +16,8 @@ import javax.inject.Inject
 class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>() {
 
     private val REQUEST_IMAGE_CAPTURE = 100
+
+    private var mListener: CallbackListener? = null
 
     @Inject
     override lateinit var viewModel: ProfileViewModel
@@ -65,10 +67,23 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
     }
 
     private fun resetProfileViews() {
+        mListener?.updateAddMenu()
         profile_avatar.hierarchy.setPlaceholderImage(R.drawable.place_holder_profile)
         display_name.text = ""
         profile_email.text = ""
         profile_mobile_number.text = ""
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is CallbackListener) {
+            mListener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mListener = null
     }
 
     companion object {

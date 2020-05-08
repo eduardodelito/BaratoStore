@@ -8,18 +8,17 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.enaz.baratostore.add.AddFragment
+import com.enaz.baratostore.common.listener.CallbackListener
 import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
 import com.enaz.baratostore.database.model.ProductItem
 import com.enaz.baratostore.dialog.LoginOrRegisterDialog
 import com.enaz.baratostore.home.HomeFragment
-import com.enaz.baratostore.home.HomeViewModel
-import com.enaz.baratostore.listener.CallbackListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFragmentListener,
-    AddFragment.OnAddFragmentListener {
+class MainActivity : DaggerAppCompatActivity(), HomeFragment.OnHomeFragmentFragmentListener,
+    AddFragment.OnAddFragmentListener, CallbackListener {
 
     private lateinit var navView: BottomNavigationView
     private lateinit var navController: NavController
@@ -46,12 +45,12 @@ class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFrag
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        //TODO: add this account if login as admin.
-//        navView.menu.findItem(R.id.navigation_add).isVisible = true
+        updateAddMenu()
 
         showDialog()
     }
+
+
 
     override fun onHomeProductItemClicked(productItem: ProductItem) {
         TODO("Not yet implemented")
@@ -61,8 +60,12 @@ class MainActivity : DaggerAppCompatActivity() , HomeFragment.OnHomeFragmentFrag
         navView.menu.findItem(R.id.navigation_home).onNavDestinationSelected(navController)
     }
 
+    override fun updateAddMenu() {
+        navView.menu.findItem(R.id.navigation_add).isVisible = firebaseAuthenticationManager.isUserLogged()
+    }
+
     private fun showDialog() {
-        val dialogFragment = LoginOrRegisterDialog(firebaseAuthenticationManager)
+        val dialogFragment = LoginOrRegisterDialog(firebaseAuthenticationManager, this)
         dialogFragment.show(supportFragmentManager, "login")
     }
 }
