@@ -38,6 +38,7 @@ class LoginOrRegisterDialog(
         login_btn.setOnClickListener {
             //send back data to PARENT fragment using callback
             // Now dismiss the fragment
+            skip_btn.isEnabled = false
             setViewVisibility(true)
             val userName = email_field.text.toString()
             val password = password_field.text.toString()
@@ -47,6 +48,7 @@ class LoginOrRegisterDialog(
         register_btn.setOnClickListener {
             //send back data to PARENT fragment using callback
             // Now dismiss the fragment
+            skip_btn.isEnabled = false
             setViewVisibility(true)
             val userName = email_field.text.toString()
             val password = password_field.text.toString()
@@ -62,6 +64,7 @@ class LoginOrRegisterDialog(
             fields_card_view.visibility = View.GONE
             error_text_view.visibility = View.GONE
         } else {
+            skip_btn.isEnabled = true
             loading_view.visibility = View.GONE
             fields_card_view.visibility = View.VISIBLE
         }
