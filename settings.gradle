@@ -1,2 +1,3 @@
+include ':store-firebase'
 include ':app', ':store-home', ':store-add', ':store-feed', ':store-cart', ':store-profile', ':store-common', ':store-database', ':store-client'
 rootProject.name = "BaratoStore"

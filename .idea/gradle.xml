@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/store-common" />
             <option value="$PROJECT_DIR$/store-database" />
             <option value="$PROJECT_DIR$/store-feed" />
+            <option value="$PROJECT_DIR$/store-firebase" />
             <option value="$PROJECT_DIR$/store-home" />
             <option value="$PROJECT_DIR$/store-profile" />
           </set>

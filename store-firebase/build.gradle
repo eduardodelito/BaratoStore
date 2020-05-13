@@ -13,9 +13,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(':store-firebase')
-    implementation project(':store-common')
-    implementation project(':store-database')
+
 //TODO: Implement Unit Test
 //    testImplementation "org.mockito:mockito-core:${Versions.mockito}"
 //    testImplementation "org.mockito:mockito-inline:${Versions.mockito}"

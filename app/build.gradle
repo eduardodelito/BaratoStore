@@ -40,6 +40,7 @@ dependencies {
     implementation project(':store-cart')
     implementation project(':store-profile')
     implementation project(':store-common')
+    implementation project(':store-firebase')
     implementation project(':store-database')
     implementation project(':store-client')
     testImplementation 'junit:junit:4.12'

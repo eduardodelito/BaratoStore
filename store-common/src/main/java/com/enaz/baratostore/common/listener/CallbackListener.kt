@@ -5,4 +5,6 @@ package com.enaz.baratostore.common.listener
  */
 interface CallbackListener {
     fun updateAddMenu()
+
+    fun login()
 }

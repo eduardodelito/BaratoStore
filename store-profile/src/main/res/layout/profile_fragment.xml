@@ -27,16 +27,19 @@
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/login_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_10dp"
+                    android:layout_margin="@dimen/margin_16dp"
+                    app:cardCornerRadius="@dimen/corner_radius_16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_50dp">
 
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/profile_avatar"
@@ -52,90 +55,119 @@
                             app:progressBarImage="@drawable/progress_animation"
                             app:roundAsCircle="true" />
 
-                        <LinearLayout
-                            android:id="@+id/layout_display_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_fields"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_10dp"
-                            android:orientation="horizontal"
+                            android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/profile_avatar">
 
-                            <TextView
-                                android:id="@+id/display_name_lbl"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Display Name : " />
+                            <LinearLayout
+                                android:id="@+id/layout_display_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
-                            <TextView
-                                android:id="@+id/display_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{profileViewModel.displayName}" />
-                        </LinearLayout>
+                                <TextView
+                                    android:id="@+id/display_name_lbl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Display Name : " />
 
-                        <LinearLayout
-                            android:id="@+id/layout_email"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/margin_10dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_display_name">
+                                <TextView
+                                    android:id="@+id/display_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@{profileViewModel.getCurrentUser().displayName}"/>
+                            </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/email_lbl"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Email : " />
+                            <LinearLayout
+                                android:id="@+id/layout_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/margin_10dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_display_name">
 
-                            <TextView
-                                android:id="@+id/profile_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{profileViewModel.email}" />
-                        </LinearLayout>
+                                <TextView
+                                    android:id="@+id/email_lbl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Email : " />
 
-                        <LinearLayout
-                            android:id="@+id/layout_mobile_number"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/margin_10dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_email">
+                                <TextView
+                                    android:id="@+id/profile_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@{profileViewModel.getCurrentUser().email}"/>
+                            </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/mobile_number_lbl"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Mobile Number : " />
+                            <LinearLayout
+                                android:id="@+id/layout_mobile_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/margin_10dp"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_email">
 
-                            <TextView
-                                android:id="@+id/profile_mobile_number"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{profileViewModel.mobileNumber}" />
-                        </LinearLayout>
+                                <TextView
+                                    android:id="@+id/mobile_number_lbl"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Mobile Number : " />
 
-                        <Button
-                            android:id="@+id/logout_btn"
-                            android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/profile_mobile_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@{profileViewModel.getCurrentUser().phoneNumber}"/>
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_btn"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_50dp"
-                            android:text="Logout"
+                            android:layout_marginTop="@dimen/margin_10dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_mobile_number" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_fields">
+
+                            <Button
+                                android:id="@+id/logout_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Logout"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                            <Button
+                                android:id="@+id/login_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Login"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

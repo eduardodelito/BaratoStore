@@ -1,30 +1,21 @@
 package com.enaz.baratostore.profile
 
 import android.graphics.Bitmap
-import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
-import com.enaz.baratostore.common.manager.FirebaseStoreManager
 import com.enaz.baratostore.common.viewmodel.BaseViewModel
+import com.enaz.firebase.repository.ProfileRepository
 import javax.inject.Inject
 
-class ProfileViewModel@Inject constructor(private val firebaseAuthenticationManager: FirebaseAuthenticationManager,
-private val firebaseStoreManager: FirebaseStoreManager
-) : BaseViewModel() {
+class ProfileViewModel @Inject constructor(private val profileRepository: ProfileRepository) :
+    BaseViewModel() {
 
-    fun signOut() {
-        if (firebaseAuthenticationManager.isUserLogged()) {
-            firebaseAuthenticationManager.signOut()
-        }
-    }
+    fun signOut() = profileRepository.signOut()
 
-    fun getDisplayName() = firebaseAuthenticationManager.getDisplayName()
+    fun getCurrentUser() = profileRepository.getCurrentUser()
 
-    fun getEmail() = firebaseAuthenticationManager.getEmail()
+    fun uploadImageAndSaveUri(imageBitmap: Bitmap) =
+        profileRepository.uploadImageAndSaveUri(imageBitmap)
 
-    fun getMobileNumber() = firebaseAuthenticationManager.getMobileNumber()
+    fun imageUri() = profileRepository.imageUri
 
-    fun uploadImageAndSaveUri(imageBitmap: Bitmap) = firebaseStoreManager.uploadImageAndSaveUri(imageBitmap)
-
-    fun imageUri() = firebaseStoreManager.imageUri
-
-    fun loadProfilePicture() = firebaseStoreManager.loadProfilePicture()
+    fun loadProfilePhoto() = profileRepository.loadProfilePhoto()
 }

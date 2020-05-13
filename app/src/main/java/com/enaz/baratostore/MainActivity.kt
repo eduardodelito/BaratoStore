@@ -9,10 +9,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.enaz.baratostore.add.AddFragment
 import com.enaz.baratostore.common.listener.CallbackListener
-import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
 import com.enaz.baratostore.database.model.ProductItem
 import com.enaz.baratostore.dialog.LoginOrRegisterDialog
 import com.enaz.baratostore.home.HomeFragment
+import com.enaz.firebase.repository.AuthenticationRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class MainActivity : DaggerAppCompatActivity(), HomeFragment.OnHomeFragmentFragm
     private lateinit var navController: NavController
 
     @Inject
-    lateinit var firebaseAuthenticationManager: FirebaseAuthenticationManager
+    lateinit var authenticationRepository: AuthenticationRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,6 @@ class MainActivity : DaggerAppCompatActivity(), HomeFragment.OnHomeFragmentFragm
     }
 
 
-
     override fun onHomeProductItemClicked(productItem: ProductItem) {
         TODO("Not yet implemented")
     }
@@ -61,11 +60,16 @@ class MainActivity : DaggerAppCompatActivity(), HomeFragment.OnHomeFragmentFragm
     }
 
     override fun updateAddMenu() {
-        navView.menu.findItem(R.id.navigation_add).isVisible = firebaseAuthenticationManager.isUserLogged()
+        navView.menu.findItem(R.id.navigation_add).isVisible =
+            authenticationRepository.isUserLogged()
+    }
+
+    override fun login() {
+        showDialog()
     }
 
     private fun showDialog() {
-        val dialogFragment = LoginOrRegisterDialog(firebaseAuthenticationManager, this)
+        val dialogFragment = LoginOrRegisterDialog(authenticationRepository, this)
         dialogFragment.show(supportFragmentManager, "login")
     }
 }

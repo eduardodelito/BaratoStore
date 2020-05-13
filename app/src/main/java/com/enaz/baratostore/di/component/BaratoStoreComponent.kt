@@ -8,6 +8,7 @@ import com.enaz.baratostore.database.di.DatabaseModule
 import com.enaz.baratostore.di.module.ActivityBindingModule
 import com.enaz.baratostore.di.module.AppModule
 import com.enaz.baratostore.di.module.ViewModelBindingModule
+import com.enaz.firebase.di.FireBaseModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -32,6 +33,7 @@ interface BaratoStoreComponent : AndroidInjector<BaratoStoreApplication> {
         fun network(networkModule: NetworkModule): Builder
         fun database(databaseModule: DatabaseModule): Builder
         fun client(clientModule: ClientModule): Builder
+        fun firebase(fireBaseModule: FireBaseModule): Builder
         fun build(): BaratoStoreComponent
     }
 }

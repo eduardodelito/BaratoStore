@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.provider.MediaStore
+import android.view.View
 import androidx.lifecycle.Observer
 import com.enaz.baratostore.common.fragment.BaseFragment
 import com.enaz.baratostore.common.listener.CallbackListener
@@ -33,8 +34,13 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
     override fun initViews() {
         logout_btn.setOnClickListener {
             viewModel.signOut()
-            resetProfileViews()
+            logoutUI()
         }
+
+        login_btn.setOnClickListener {
+            mListener?.login()
+        }
+
         profile_avatar.setOnClickListener {
             takePicture()
         }
@@ -43,10 +49,10 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
     override fun subscribeUi() {
         with(viewModel) {
             imageUri().observe(viewLifecycleOwner, Observer { imageUri ->
-                if (imageUri != null) profile_avatar.setImageURI(imageUri, context)
+                profile_avatar.setImageURI(imageUri, context)
             })
 
-            loadProfilePicture()
+            loadProfilePhoto()
         }
     }
 
@@ -66,12 +72,12 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding, ProfileViewModel>()
         }
     }
 
-    private fun resetProfileViews() {
+    private fun logoutUI() {
         mListener?.updateAddMenu()
-        profile_avatar.hierarchy.setPlaceholderImage(R.drawable.place_holder_profile)
-        display_name.text = ""
-        profile_email.text = ""
-        profile_mobile_number.text = ""
+        viewModel.loadProfilePhoto()
+        logout_btn.visibility = View.GONE
+        login_btn.visibility = View.VISIBLE
+        layout_fields.visibility = View.GONE
     }
 
     override fun onAttach(context: Context) {

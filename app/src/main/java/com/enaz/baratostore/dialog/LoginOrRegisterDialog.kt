@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.enaz.baratostore.R
 import com.enaz.baratostore.common.listener.CallbackListener
-import com.enaz.baratostore.common.manager.FirebaseAuthenticationManager
+import com.enaz.firebase.repository.AuthenticationRepository
 import kotlinx.android.synthetic.main.login_dialog_layout.*
 
 /**
  * Created by eduardo.delito on 5/7/20.
  */
 class LoginOrRegisterDialog(
-    private val firebaseAuthenticationManager: FirebaseAuthenticationManager,
+    private val authenticationRepository: AuthenticationRepository,
     private val listener: CallbackListener
 ) :
     DialogFragment() {
@@ -25,7 +25,7 @@ class LoginOrRegisterDialog(
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = false
-        if (firebaseAuthenticationManager.isUserLogged()) dismiss()
+        if (authenticationRepository.isUserLogged()) dismiss()
         return inflater.inflate(R.layout.login_dialog_layout, container, false)
     }
 
@@ -42,7 +42,7 @@ class LoginOrRegisterDialog(
             setViewVisibility(true)
             val userName = email_field.text.toString()
             val password = password_field.text.toString()
-            firebaseAuthenticationManager.login(userName, password, ::onResult)
+            authenticationRepository.login(userName, password, ::onResult)
         }
 
         register_btn.setOnClickListener {
@@ -52,7 +52,7 @@ class LoginOrRegisterDialog(
             setViewVisibility(true)
             val userName = email_field.text.toString()
             val password = password_field.text.toString()
-            firebaseAuthenticationManager.register(userName, password, userName, ::onResult)
+            authenticationRepository.register(userName, password, userName, ::onResult)
         }
 
         skip_btn.setOnClickListener { dismiss() }
