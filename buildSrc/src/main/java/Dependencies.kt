@@ -22,7 +22,7 @@ object Versions {
     const val kotlin_version = "1.3.72"
 
     // Android
-    const val androidGradle = "4.0.0-beta05"
+    const val androidGradle = "4.0.0-rc01"
     const val navigation = "2.2.2"
     const val appcompat = "1.1.0"
     const val constraintLayout = "1.1.3"
